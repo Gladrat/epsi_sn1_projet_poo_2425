@@ -13,12 +13,17 @@ class Character:
     # __str__
 
     def is_alive(self):
-        pass
+        return self.hp > 0
+
+    def decrease_hp(self, amount):
+        self.hp -= amount
+        self.show_healthbar()
 
     def show_healthbar(self):
-        pass
+        print(
+            f"[{"o" * self.hp}{" " * (self.max_hp - self.hp)}] {self.hp}/{self.max_hp} hp")
         # print
-            # [oooooo              ] 6/14 hp
+        # [oooooo              ] 6/14 hp
 
     def attack(self):
         print(f"Attack value: {self.attack_value + self.dice.roll()}")
@@ -35,3 +40,4 @@ if __name__ == "__main__":
 
     char_1.attack()
     char_1.defense()
+    char_1.decrease_hp(6)
